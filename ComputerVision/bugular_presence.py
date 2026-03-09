@@ -49,4 +49,44 @@ while True:
 
 
 
+        for c in contours:
+
+            if cv2.contourArea(c) > 500:
+                continue
+
+            x,y,w,h = cv2.boundingRect(c)
+
+            cv2.rectangle(frame , (x,y), (x+w ,y+h), (0,255,0),2)
+
+
+        motion = any(cv2.contourArea(c) >500 for c in contours)
+
+        if motion:
+            cv2.putText(frame , "Motion Detected ",(10,60), cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),2)
+
+            #cv2.imwrite(f"motionFrame{count}.jpg",frame)  this line for to save as image if any motion detected 
+
+            # print(f" file saves {count}.jpg")
+
+
+        
+        cv2.imshow("motion Detected", frame)
+
+        count+=1
+
+
+        if cv2.waitKey(1) & 0xFF ==27:
+            break
+
+
+        cap.release()
+
+        cv2.destroyAllWindows()
+
+        
+
+
+
+
+
 
