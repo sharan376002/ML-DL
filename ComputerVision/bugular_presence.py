@@ -51,7 +51,7 @@ while True:
 
         for c in contours:
 
-            if cv2.contourArea(c) > 500:
+            if cv2.contourArea(c) <500:
                 continue
 
             x,y,w,h = cv2.boundingRect(c)
@@ -59,7 +59,7 @@ while True:
             cv2.rectangle(frame , (x,y), (x+w ,y+h), (0,255,0),2)
 
 
-        motion = any(cv2.contourArea(c) >500 for c in contours)
+        motion = any(cv2.contourArea(c) <500 for c in contours)
 
         if motion:
             cv2.putText(frame , "Motion Detected ",(10,60), cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),2)
@@ -79,9 +79,9 @@ while True:
             break
 
 
-        cap.release()
+cap.release()
 
-        cv2.destroyAllWindows()
+cv2.destroyAllWindows()
 
         
 
