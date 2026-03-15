@@ -51,7 +51,7 @@ while True:
 
         for c in contours:
 
-            if cv2.contourArea(c) <500:
+            if cv2.contourArea(c) <500: # we ignores the less than 500 
                 continue
 
             x,y,w,h = cv2.boundingRect(c)
