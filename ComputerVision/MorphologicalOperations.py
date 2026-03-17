@@ -70,6 +70,60 @@ Dilation helps to:
 
 
 
+# OPening 
+
+# it is errosion followed by dilation it occusliie one after another , accodrind to our needs
+
+opening =  cv2.morphologyEx(img1, cv2.MORPH_OPEN, ker)
+
+cv2.imshow("OPeing : ", opening)
+
+"""
+
+1. Erode image
+2. Dilate result
+
+Opening removes small objects or noise while keeping main shapes.
+
+we use it to remove the noise in the image
+
+"""
+
+
+# 4. closing 
+
+# it is dilation followed by errosion it just a opposite of the opening
+
+clo = cv2.morphologyEx(img1, cv2.MORPH_CLOSE, ker)
+
+cv2.imshow("Closing : ", clo)
+
+"""
+
+Closing fills small holes and gaps inside objects.
+1. Dilate image
+2. Erode result
+
+
+we ue it to
+- fill small holes inside objects
+- connect broken boundaries
+"""
+
+
+# morphological gradients 
+
+# it is actually morph gradient = dilation - errosion 
+
+# it only contains of the bboundraies of the image
+
+# it is used to dectct the boundraies and highlight the edges
+
+grad = cv2.morphologyEx(img1 , cv2.MORPH_GRADIENT, ker)
+
+cv2.imshow("Gradient : ", grad)
+
+
 cv2.waitKey(0)
 
 cv2.destroyAllWindows()
