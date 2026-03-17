@@ -26,6 +26,14 @@ Small white pixels or noise disappear.
 
 the white region becomes --> Smaller
 
+
+Why we use it
+
+Erosion is used to:
+
+-remove small noise pixels
+-separate connected objects
+
 """
 
 
@@ -34,6 +42,32 @@ ker = np.ones((3,3), np.uint8)
 erosion = cv2.erode(img1, ker , iterations=1)
 
 cv2.imshow("erro", erosion)
+
+
+
+# 2.Dilation
+
+# dilation explands the white region in the image 
+
+# white object becomes larger
+
+dil = cv2.dilate(img1 , ker , iterations=1)
+
+cv2.imshow("Dilation : ", dil)
+
+"""
+
+dilation
+
+Why we use it
+
+Dilation helps to:
+
+- fill small holes
+-  connect broken object parts
+
+"""
+
 
 
 cv2.waitKey(0)
