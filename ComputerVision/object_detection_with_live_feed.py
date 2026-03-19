@@ -18,7 +18,7 @@ while True:
 
     ret,frame = vid.read()
 
-    res = model(frame)
+    res = model(frame)  # if i put classes= [0] then it detcet the persons only not others
 
     annot = res[0].plot()
 
