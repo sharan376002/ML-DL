@@ -3,7 +3,13 @@ import cv2
 from ultralytics import YOLO
 
 
-vid  = cv2.VideoCapture(0)
+vid  = cv2.VideoCapture(0)   
+"""
+
+to add video in it , just simply , remove the 0 and put the path of the video file , the n it becomes a  multi object dectection 
+in that video
+
+"""
 
 
 model = YOLO("yolov8n.pt")
