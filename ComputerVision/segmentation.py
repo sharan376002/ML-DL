@@ -15,6 +15,8 @@ model = YOLO("yolov8n-seg.pt")
 while True:
 
     ret,frame = vid.read()
+    if not ret:
+        break
 
     res = model.track(frame , classes=[0], persist=True , verbose=False)
 
@@ -38,16 +40,16 @@ while True:
                 
                 # Apply mask to frame with overlay
                 colored_mask = np.zeros_like(annotated_frame)
-                colored_mask[:,:] = (0, 255, 0)  # Green color for masks
+                colored_mask[:,:] = (0, 0, 255)  # red color for masks
                 mask_indices = mask_resi > 0.5
+
                 annotated_frame[mask_indices] = cv2.addWeighted(annotated_frame[mask_indices], 0.6, colored_mask[mask_indices], 0.4, 0)
                 
                 # Draw bounding box and ID
                 cv2.rectangle(annotated_frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
                 cv2.putText(annotated_frame, f'ID: {int(person_id)}', (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
     
-    if not ret:
-        break
+   
     
     # Display frame
     cv2.imshow('YOLOv8 Instance Segmentation & Tracking', annotated_frame)
