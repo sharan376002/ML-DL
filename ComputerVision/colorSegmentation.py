@@ -29,7 +29,7 @@ ycbC = [0, 140, 100]
 
 labC = [20, 140, 150]
 
-threshold = 30  # the threshold act as tolerance if any diffent lighting conditon , it responds accordingly so that we can varry it 
+threshold = 80  # the threshold act as tolerance if any diffent lighting conditon , it responds accordingly so that we can varry it 
 
 
 
@@ -53,7 +53,7 @@ resBgr = cv2.bitwise_and(resize,resize,mask=maskbgr)
 minHsv = np.array([hsvC[0] - threshold, hsvC[1]- threshold, hsvC[2] -threshold])
 maxHsv = np.array([hsvC[0] + threshold , hsvC[1]+ threshold, hsvC[2] + threshold ])
 
-maskHsv = cv2.inRange(resize,minHsv,maxHsv)
+maskHsv = cv2.inRange(hsv,minHsv,maxHsv)
 
 resHsv = cv2.bitwise_and(resize,resize,mask=maskHsv)
 
@@ -63,7 +63,7 @@ resHsv = cv2.bitwise_and(resize,resize,mask=maskHsv)
 minYcb = np.array([ycbC[0] - threshold, ycbC[1]- threshold, ycbC[2] -threshold])
 maxYcb = np.array([ycbC[0] + threshold , ycbC[1]+ threshold, ycbC[2] + threshold ])
 
-maskYcb = cv2.inRange(resize,minYcb,maxYcb)
+maskYcb = cv2.inRange(ycb,minYcb,maxYcb)
 
 resYcb = cv2.bitwise_and(resize,resize,mask=maskYcb)
 
@@ -76,9 +76,35 @@ resYcb = cv2.bitwise_and(resize,resize,mask=maskYcb)
 minlab = np.array([labC[0] - threshold, labC[1]- threshold, labC[2] -threshold])
 maxlab = np.array([labC[0] + threshold , labC[1]+ threshold, labC[2] + threshold ])
 
-masklab = cv2.inRange(resize,minlab,maxlab)
+masklab = cv2.inRange(lab,minlab,maxlab)
 
 reslab = cv2.bitwise_and(resize,resize,mask=masklab)
+
+
+
+# final  results
+
+
+cv2.imshow("orginal image : ", resize)
+# maks
+cv2.imshow("BGR MASK : ", maskbgr)
+
+cv2.imshow("HSV MASK : ", maskHsv)
+
+cv2.imshow("YCB mask : ", maskYcb)
+
+cv2.imshow("Lab mask : ", masklab)
+
+
+# result 
+
+cv2.imshow("BGR RES : ", resBgr)
+
+cv2.imshow("HSV RES : ", resHsv)
+
+cv2.imshow("YCB RES  : ", resYcb)
+
+cv2.imshow("LAB RES : ", reslab)
 
 
 
