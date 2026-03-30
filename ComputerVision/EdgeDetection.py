@@ -26,3 +26,24 @@ then finally  we compute teh gradient of it
 
 """
 
+
+img = cv2.imread(r'D:\ML-DL-learns\ComputerVision\Datasets\fl3.jpg')
+
+
+
+
+
+
+
+
+
+
+
+
+if cv2.waitKey(1) & 0xFF ==27:
+    quit()
+
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
