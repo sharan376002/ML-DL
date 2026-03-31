@@ -29,10 +29,20 @@ then finally  we compute teh gradient of it
 
 img = cv2.imread(r'D:\ML-DL-learns\ComputerVision\Datasets\fl3.jpg')
 
+resize = cv2.resize(img,(500,500))
 
 
+img_gray = cv2.cvtColor(resize ,cv2.COLOR_BGR2GRAY)
 
+img_blur = cv2.GaussianBlur(img_gray , (3,3),0)
 
+sobelx = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5) # Sobel Edge Detection on the X axis
+sobely = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=0, dy=1, ksize=5) # Sobel Edge Detection on the Y axis
+sobelxy = cv2.Sobel(src=img_blur, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5) # Combined X and Y Sobel Edge Detection
+# Display Sobel Edge Detection Images
+cv2.imshow('Sobel X', sobelx)
+cv2.imshow('Sobel Y', sobely)
+cv2.imshow('Sobel X Y using Sobel() function', sobelxy)
 
 
 
