@@ -46,7 +46,9 @@ cv2.imshow('Sobel X Y using Sobel() function', sobelxy)
 
 
 
+canny = cv2.Canny(img_blur , threshold1=100, threshold2=200)
 
+cv2.imshow('Canny Edge Detection', canny)
 
 
 
