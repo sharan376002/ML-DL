@@ -45,6 +45,17 @@ cv2.imshow('Sobel Y', sobely)
 cv2.imshow('Sobel X Y using Sobel() function', sobelxy)
 
 
+"""
+Canny Edge Detection:
+Finds edges in an image (where intensity changes).
+
+threshold1 → weak edges  
+threshold2 → strong edges  
+
+Strong edges are kept.
+Weak edges are kept only if connected to strong ones.
+Others are removed as noise.
+"""
 
 canny = cv2.Canny(img_blur , threshold1=100, threshold2=200)
 
